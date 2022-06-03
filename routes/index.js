@@ -1,17 +1,8 @@
 const express= require("express");
 const router= express.Router();
+const {getMethod,postMethod}= require('../controllers/controller');
+router.get('/',getMethod);
 
-router.get('/',(req,res)=>{
-    res.render("index.ejs",{url:'https://www.youtube.com/embed/fPX0C-g5xpU'});
-});
-
-router.post('/get-link',(req,res)=>{
-    
-    str= req.body.url;
-    str= str.split('=');
-    x=str[1];
-    console.log(x);
-    res.render("index.ejs",{url:`https://www.youtube.com/embed/${x}`});
-})
+router.post('/get-link',postMethod);
 
 module.exports=  router;
